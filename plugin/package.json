@@ -1,0 +1,35 @@
+{
+  "name": "enagent-plugin",
+  "version": "0.1.0",
+  "description": "EnAgent: 日本のフリーランス向け自律決済AIエージェント (OpenClaw plugin)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "openclaw",
+    "plugin",
+    "jpyc",
+    "stablecoin",
+    "freelance",
+    "japan",
+    "line",
+    "polygon"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "openclaw": "latest",
+    "@types/node": "^22.0.0"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.4.0"
+  }
+}

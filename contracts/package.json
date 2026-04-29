@@ -1,7 +1,7 @@
 {
-  "name": "enagent-contracts",
+  "name": "yenagent-contracts",
   "version": "0.1.0",
-  "description": "EnAgent: MockJPYC + Escrow contracts (Polygon Amoy)",
+  "description": "YenAgent: MockJPYC + Escrow contracts (Polygon Amoy)",
   "private": true,
   "scripts": {
     "compile": "hardhat compile",

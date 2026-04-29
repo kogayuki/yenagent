@@ -3,7 +3,7 @@
 ## スライド構成（8枚）
 
 ### 1. タイトル
-> 円ジェント / EnAgent
+> YenAgent (円ジェント)
 > LINEで動く、日本のフリーランス向け自律決済AIエージェント
 
 ### 2. 課題（問題提起）
@@ -43,8 +43,8 @@
 
 ### 8. クロージング
 > 「Bridge AI Reasoning with Blockchain Execution」
-> ── 円ジェントは、その橋を **LINE と JPYC で日本に降ろす** プロダクトです。
-> github.com/(your-handle)/enagent
+> ── YenAgent (円ジェント) は、その橋を **LINE と JPYC で日本に降ろす** プロダクトです。
+> github.com/(your-handle)/yenagent
 
 ## トーン指針
 

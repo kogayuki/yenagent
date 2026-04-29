@@ -6,8 +6,8 @@ import { monitorDeliveryTool } from "./tools/monitorDelivery.js";
 import { releasePaymentTool } from "./tools/releasePayment.js";
 
 export default definePlugin({
-  name: "enagent",
-  displayName: "円ジェント (EnAgent)",
+  name: "yenagent",
+  displayName: "YenAgent (円ジェント)",
   description:
     "日本のフリーランス向け自律決済AIエージェント。請求書発行→JPYCエスクロー→納品検知→自動release を一気通貫で実行する。",
   systemPrompt: SYSTEM_PROMPT,

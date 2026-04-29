@@ -1,4 +1,4 @@
-# 円ジェント (EnAgent)
+# YenAgent (円ジェント)
 
 > **LINE上で動く、日本のフリーランス向け自律決済AIエージェント**
 > 請求書発行 → 入金監視 → 納品検知 → JPYC自動release を、OpenClawプラグインとして実装。
@@ -14,11 +14,11 @@ LINEで日本語で話しかけるだけで、以下の流れが**人手なし**
 ```
 [フリーランサー] LINE: 「ABC社の案件、3万円で請求書出して」
    ↓
-[EnAgent] 過去履歴から明細生成 → 請求書PDF & on-chain claim ID 発行
+[YenAgent] 過去履歴から明細生成 → 請求書PDF & on-chain claim ID 発行
    ↓
 [クライアント] LINE: ワンタップで JPYC エスクロー入金
    ↓
-[EnAgent] GitHub PR マージ等で納品検知 → 自律的に on-chain release 実行
+[YenAgent] GitHub PR マージ等で納品検知 → 自律的に on-chain release 実行
    ↓
 [フリーランサー] tx hash 通知（手数料 ~$0.001、決済 ~5秒）
 ```
@@ -31,7 +31,7 @@ LINE (ユーザー)
 OpenClaw runtime
    ├─ @openclaw/line             (LINE adapter, 公式)
    ├─ LLM: Claude Sonnet 4.6
-   └─ enagent plugin (このリポジトリ)
+   └─ yenagent plugin (このリポジトリ)
         ├─ tools/createInvoice
         ├─ tools/createEscrow
         ├─ tools/monitorDelivery

@@ -5,6 +5,10 @@
 
 [Clawathon Tokyo Edition 2026 (May 2)](https://luma.com/zw01ink4) 出場プロダクト。
 
+🔗 **GitHub**: https://github.com/kogayuki/yenagent
+🔗 **Demo**: `openclaw tui` → "Clawthon社の案件、3万円、3分割で請求書出して"
+🔗 **Onchain Evidence**: [docs/evidence.md](./docs/evidence.md)
+
 ---
 
 ## 何ができるか

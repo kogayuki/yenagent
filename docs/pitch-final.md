@@ -128,7 +128,7 @@ YenAgent は、その橋を **LINE と JPYC で日本に降ろす** プロダク
 副業1,200万人の手作業を、AIに任せませんか。
 
 ```
-GitHub:  github.com/(your-handle)/yenagent
+GitHub:  github.com/kogayuki/yenagent
 TUI:     openclaw tui  →  YenAgent skill ready
 Contract: 0x5f692E7e62B372BE71434816bE35781bE5fcf454 (Amoy)
 ```

@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>YenAgent — Clawathon Tokyo</title>
+
+  <!-- reveal.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+  <!-- Fonts: 明朝(headline) + Noto Sans JP(body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho+B1:wght@500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --ink: #1f1d1a;
+      --accent: #b85042;
+      --muted: #6b655d;
+      --line: #d8d2c5;
+      --code-bg: #1a1815;
+      --code-fg: #f4ede0;
+      --gold: #b08d3e;
+    }
+
+    .reveal { font-family: 'Noto Sans JP', system-ui, sans-serif; color: var(--ink); }
+    .reveal .slides { text-align: left; }
+    .reveal .slides > section { padding: 4vh 6vw; }
+
+    body, .reveal-viewport { background: var(--bg) !important; }
+
+    /* Headline mincho */
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Shippori Mincho B1', 'Noto Serif JP', serif;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      margin-bottom: 0.4em;
+      text-transform: none;
+    }
+    .reveal h1 { font-size: 3.4em; }
+    .reveal h2 { font-size: 2.0em; }
+    .reveal h3 { font-size: 1.4em; }
+
+    .reveal p, .reveal li, .reveal td, .reveal th {
+      font-size: 0.92em;
+      line-height: 1.65;
+    }
+
+    .reveal a { color: var(--accent); }
+
+    /* Accent rule */
+    .accent-rule {
+      width: 56px; height: 4px; background: var(--accent);
+      margin: 0.4em 0 1em;
+    }
+
+    /* Tagline / kicker */
+    .kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .lead {
+      font-size: 1.15em;
+      color: var(--muted);
+      max-width: 28em;
+      line-height: 1.7;
+    }
+
+    /* Tables */
+    .reveal table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 0.6em 0;
+      font-size: 0.78em;
+    }
+    .reveal table th, .reveal table td {
+      border-bottom: 1px solid var(--line);
+      padding: 0.55em 0.7em;
+      text-align: left;
+      vertical-align: top;
+    }
+    .reveal table th {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 0.7em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--ink);
+      background: transparent;
+    }
+
+    /* Code blocks */
+    .reveal pre {
+      background: var(--code-bg);
+      color: var(--code-fg);
+      padding: 1em 1.2em;
+      border-radius: 8px;
+      font-size: 0.62em;
+      font-family: 'JetBrains Mono', monospace;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      overflow-x: auto;
+      margin: 0.6em 0;
+    }
+    .reveal code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(184, 80, 66, 0.08);
+      color: var(--accent);
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+      font-size: 0.88em;
+    }
+    .reveal pre code {
+      background: none;
+      color: var(--code-fg);
+      padding: 0;
+      display: block;
+      white-space: pre;
+    }
+
+    /* Slide number */
+    .reveal .slide-number {
+      background: transparent;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      right: 24px; bottom: 18px;
+    }
+
+    /* Custom layouts */
+    .title-slide { display: flex; flex-direction: column; justify-content: center; height: 100%; }
+    .title-slide .product { font-family: 'Shippori Mincho B1', serif; font-size: 6.2em; font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+    .title-slide .yen { color: var(--accent); }
+    .title-slide .ja { font-family: 'Shippori Mincho B1', serif; font-size: 1.7em; font-weight: 500; color: var(--muted); margin-top: 0.2em; letter-spacing: 0.02em; }
+    .title-slide .tagline { font-size: 1.25em; margin-top: 1.2em; max-width: 26em; line-height: 1.7; color: var(--ink); }
+    .title-slide .footer { margin-top: 2.4em; font-family: 'JetBrains Mono', monospace; font-size: 0.65em; color: var(--muted); letter-spacing: 0.1em; }
+    .title-slide .footer .quote { display:block; margin-top: 0.6em; font-style: italic; color: var(--accent); letter-spacing: 0; font-family: 'Shippori Mincho B1', serif; font-size: 1.4em; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2em; align-items: start; }
+    .grid-2-65 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2em; align-items: start; }
+
+    .flow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78em;
+      background: #efe9dc;
+      border-left: 4px solid var(--accent);
+      padding: 1em 1.2em;
+      line-height: 1.9;
+      border-radius: 4px;
+      white-space: pre;
+    }
+
+    .stat {
+      display: inline-block;
+      font-family: 'Shippori Mincho B1', serif;
+      font-size: 3.2em;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-right: 0.3em;
+    }
+    .stat-label { color: var(--muted); font-size: 0.85em; }
+
+    .pill {
+      display: inline-block;
+      padding: 0.18em 0.7em;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      font-size: 0.65em;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.1em;
+      margin-right: 0.4em;
+      margin-bottom: 0.3em;
+    }
+    .pill.accent { background: var(--accent); color: white; border-color: var(--accent); }
+    .pill.muted { color: var(--muted); border-color: var(--line); }
+
+    .list-clean { list-style: none; padding: 0; }
+    .list-clean li { padding: 0.5em 0; border-bottom: 1px solid var(--line); }
+    .list-clean li:last-child { border-bottom: none; }
+    .list-clean li .num { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-weight: 700; margin-right: 0.6em; }
+
+    .quote-block {
+      font-family: 'Shippori Mincho B1', serif;
+      font-size: 1.6em;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--ink);
+      padding-left: 0.7em;
+      border-left: 5px solid var(--accent);
+    }
+
+    .closing-headline {
+      font-family: 'Shippori Mincho B1', serif;
+      font-size: 3.2em;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+    .closing-headline .em { color: var(--accent); }
+
+    .tx { color: var(--gold); font-family: 'JetBrains Mono', monospace; font-size: 0.78em; word-break: break-all; }
+
+    /* Demo placeholder */
+    .demo-screen {
+      background: #1a1815;
+      color: #f4ede0;
+      padding: 2.2em 2.4em;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82em;
+      line-height: 1.8;
+      max-width: 36em;
+      margin: 0.4em 0;
+    }
+    .demo-screen .you { color: #b08d3e; }
+    .demo-screen .ai { color: #f4ede0; }
+
+    .checkmark { color: #5a8d4a; font-weight: 700; margin-right: 0.3em; }
+    .triangle { color: var(--gold); }
+
+    .small { font-size: 0.75em; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ============ Slide 1: Title ============ -->
+      <section>
+        <div class="title-slide">
+          <div class="kicker">Clawathon Tokyo Edition · 2026.05.02</div>
+          <div class="product"><span class="yen">Yen</span>Agent</div>
+          <div class="ja">円ジェント</div>
+          <div class="tagline">
+            日本のフリーランスのための、<br>
+            自律決済AIエージェント。
+          </div>
+          <div class="footer">
+            Yuki Koga · Injective Japan
+            <span class="quote">— Bridging AI Reasoning with Blockchain Execution.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Slide 2: Problem ============ -->
+      <section>
+        <div class="kicker">The Problem</div>
+        <h2>副業 1,200万人時代、<br>決済はまだ手作業。</h2>
+        <div class="accent-rule"></div>
+
+        <div class="grid-2" style="margin-top: 1.4em">
+          <div>
+            <p>
+              日本のフリーランス・副業ワーカーは <strong>1,200万人超</strong>。<br>
+              請求 → 振込 → 着金 → 経費仕分けは、いまだに <strong>手作業 + 振込手数料 + タイムラグ</strong>。
+            </p>
+            <p>
+              海外案件は <strong>SWIFT / PayPal で数日 + FX損失</strong> で手取りが目減り。
+            </p>
+            <p>
+              AIエージェント時代と言われながら、<br>
+              <span style="color: var(--accent); font-weight: 700;">"決済まで"自動化できているサービスは皆無。</span>
+            </p>
+          </div>
+          <div>
+            <div style="margin-bottom: 1.2em;">
+              <div><span class="stat">1,200万</span><span class="stat-label">日本の副業人口（2025）</span></div>
+            </div>
+            <div style="margin-bottom: 1.2em;">
+              <div><span class="stat">¥330</span><span class="stat-label">1件の振込手数料平均</span></div>
+            </div>
+            <div>
+              <div><span class="stat">3〜5日</span><span class="stat-label">海外案件の決済タイムラグ</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Slide 3: Solution ============ -->
+      <section>
+        <div class="kicker">Solution</div>
+        <h2>YenAgent: 日本語ひとこと、JPYC で完結。</h2>
+        <div class="accent-rule"></div>
+
+        <div class="grid-2-65" style="margin-top: 1em;">
+          <div>
+            <div class="flow">ユーザー（日本語）→  AIエージェント  →  Polygon Amoy
+   "請求書出して"  →  Claude推論     →  JPYCエスクロー
+                                   →  自律 release</div>
+
+            <p style="margin-top: 1em;">
+              <strong>4つの自律ツール</strong> を OpenClaw skill として実装。
+            </p>
+            <ul class="list-clean">
+              <li><span class="num">01</span> <code>createInvoice</code> — 自然言語から請求書構造化</li>
+              <li><span class="num">02</span> <code>createEscrow</code> — JPYCをエスクローにロック</li>
+              <li><span class="num">03</span> <code>monitorDelivery</code> — GitHub PR / URLで納品検知</li>
+              <li><span class="num">04</span> <code>releasePayment</code> — マイルストーン段階解放</li>
+            </ul>
+          </div>
+          <div>
+            <div class="demo-screen">
+<span class="you">USER:</span> ABC社の案件、3万円、5月末締め、3分割で請求書出して
+
+<span class="ai">YenAgent:</span> INV-1777688970-DG5OH3 を発行しました。
+3分割（10,000円 × 3）。
+クライアント承認後、エスクロー作成しますか？
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Slide 4: Tech Stack ============ -->
+      <section>
+        <div class="kicker">Architecture</div>
+        <h2>OpenClaw skill model に完全準拠。</h2>
+        <div class="accent-rule"></div>
+
+        <div class="grid-2" style="margin-top: 1em;">
+          <div>
+            <table>
+              <tr><th>Layer</th><th>Stack</th></tr>
+              <tr><td>エージェントランタイム</td><td><strong>OpenClaw</strong> · TUI / LINE / Discord / Slack adapter</td></tr>
+              <tr><td>AI Reasoning</td><td>Claude Opus 4.7（OpenClaw経由）</td></tr>
+              <tr><td>スキル定義</td><td><code>~/.openclaw/skills/yenagent/SKILL.md</code>（公式形式）</td></tr>
+              <tr><td>on-chain実行</td><td>viem + Polygon Amoy testnet</td></tr>
+              <tr><td>ステーブルコイン</td><td>Mock JPYC ERC20 → mainnet で実JPYC（電子決済手段）</td></tr>
+              <tr><td>コントラクト</td><td>Solidity 0.8.24 · Hardhat · OpenZeppelin</td></tr>
+            </table>
+          </div>
+          <div>
+            <div class="quote-block">
+              SKILL.md だけで <span style="color: var(--accent);">LINE / Discord / Slack / Signal</span> すべてに同じ業務ロジックが乗る。
+            </div>
+            <p class="small" style="margin-top: 1em;">
+              OpenClawのチャネル抽象を最大活用。<br>
+              <strong>本日のTUIデモ = LINE Bot本番と完全互換</strong>。
+            </p>
+            <div style="margin-top: 1.5em;">
+              <span class="pill accent">SKILL-NATIVE</span>
+              <span class="pill">CLAUDE OPUS 4.7</span>
+              <span class="pill">VIEM</span>
+              <span class="pill">JPYC</span>
+              <span class="pill">POLYGON AMOY</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Slide 5: Demo ============ -->
+      <section data-background-color="#1f1d1a">
+        <div style="height: 100%; display: flex; flex-direction: column; justify-content: center; color: #faf7f2;">
+          <div class="kicker" style="color: var(--accent);">Live Demo · 90sec</div>
+          <h1 style="color: #faf7f2; font-size: 4.5em; margin-top: 0.2em;">画面切替 → TUI</h1>
+          <div class="accent-rule"></div>
+          <p class="lead" style="color: #b8b3a8; margin-top: 1em;">
+            日本語1行から、Polygon Amoy上に実トランザクションが流れる瞬間を、ここでお見せします。
+          </p>
+
+          <div style="margin-top: 2em; font-family: 'JetBrains Mono', monospace; font-size: 0.75em; color: #b08d3e;">
+            ▸ 自然言語 → Claude推論<br>
+            ▸ ブロックチェーン操作前の確認ゲート<br>
+            ▸ 実Amoy txが目の前で発火 → Explorer着弾<br>
+            ▸ マイルストーン release で payeeへ実JPYC着金<br>
+            ▸ ガス不足等は Claude 自律でリカバリ提案
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Slide 6: Track Fit ============ -->
+      <section>
+        <div class="kicker">Track Fit</div>
+        <h2>4トラック中 3トラック直撃。</h2>
+        <div class="accent-rule"></div>
+
+        <table style="margin-top: 1em;">
+          <tr><th>トラック</th><th>該当性</th><th>YenAgentでの実装</th></tr>
+          <tr>
+            <td><strong>Autonomous Agent Workflows</strong></td>
+            <td><span class="checkmark">✓</span></td>
+            <td>4ツールの自律連携と確認ゲート機構</td>
+          </tr>
+          <tr>
+            <td><strong>On-chain Settlement for AI</strong></td>
+            <td><span class="checkmark">✓</span></td>
+            <td>JPYCエスクロー + milestone release</td>
+          </tr>
+          <tr>
+            <td><strong>AI-Driven Governance</strong></td>
+            <td><span class="triangle">▲</span></td>
+            <td>multi-payerでon-chain投票化（roadmap）</td>
+          </tr>
+          <tr>
+            <td><strong>Cross-border Agent Operations</strong></td>
+            <td><span class="checkmark">✓</span></td>
+            <td>USDCモード切替で日本↔海外を即対応</td>
+          </tr>
+        </table>
+
+        <div style="margin-top: 1.4em;">
+          <div class="kicker" style="font-size: 0.55em;">スポンサー賞接続</div>
+          <p class="small" style="margin-top: 0.4em;">
+            <strong>ISEAI</strong>: SKILL.md そのまま管理画面投入可能 ·
+            <strong>XRPL</strong>: JPYC × クロスボーダーは XRPL Japan の主戦場 ·
+            <strong>World</strong>: 請求権者の人間性検証（World ID） ·
+            <strong>NEAR / MAGLAB</strong>: Japan特化エージェント経済
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ Slide 7: Roadmap ============ -->
+      <section>
+        <div class="kicker">Roadmap</div>
+        <h2>本日 → 3ヶ月先まで。</h2>
+        <div class="accent-rule"></div>
+
+        <table style="margin-top: 1.2em;">
+          <tr><th>Phase</th><th>期間</th><th>内容</th></tr>
+          <tr>
+            <td><strong style="color: var(--accent);">Phase 1</strong></td>
+            <td>本日</td>
+            <td>OpenClaw TUI で4ツールE2E、Polygon Amoyに実tx流れる ✓</td>
+          </tr>
+          <tr>
+            <td><strong>Phase 2</strong></td>
+            <td>〜2週間</td>
+            <td>LINE Bot 公式adapter接続 / GitHub Webhook自律納品検知</td>
+          </tr>
+          <tr>
+            <td><strong>Phase 3</strong></td>
+            <td>〜1ヶ月</td>
+            <td>mainnet実JPYC切替 / ISEAI管理画面ホスティング / B2B SaaS化</td>
+          </tr>
+          <tr>
+            <td><strong>Phase 4</strong></td>
+            <td>〜3ヶ月</td>
+            <td>クロスボーダー USDCモード / 確定申告CSV / Outlook・Teams連携</td>
+          </tr>
+        </table>
+
+        <p class="small" style="margin-top: 1.6em; padding: 0.8em 1em; background: #efe9dc; border-radius: 4px;">
+          すでに OpenClawスキル形式 → <strong>Phase 2 でユーザー獲得まで最速ルート。</strong>
+        </p>
+      </section>
+
+      <!-- ============ Slide 8: Closing ============ -->
+      <section>
+        <div class="kicker">Closing</div>
+
+        <div class="closing-headline" style="margin-top: 0.8em;">
+          「Bridging AI Reasoning<br>with Blockchain Execution.」
+        </div>
+        <div class="accent-rule" style="width: 100px; margin: 1.2em 0;"></div>
+
+        <p style="font-size: 1.3em; line-height: 1.7; max-width: 26em;">
+          YenAgent は、その橋を <span style="color: var(--accent); font-weight: 700;">LINE と JPYC で日本に降ろす</span> プロダクトです。
+        </p>
+        <p style="font-size: 1.3em; line-height: 1.7; margin-top: 0.4em;">
+          副業 <strong>1,200万人</strong> の手作業を、AIに任せませんか。
+        </p>
+
+        <div style="margin-top: 2em; padding: 1em 1.2em; background: #1a1815; color: #f4ede0; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.7em; line-height: 1.9;">
+          GitHub:    github.com/(your-handle)/yenagent<br>
+          TUI:       openclaw tui  →  YenAgent skill ready<br>
+          Contract:  <span class="tx">0x5f692E7e62B372BE71434816bE35781bE5fcf454</span> (Amoy)<br>
+          Demo tx:   <span class="tx">0xb548af09bae37f9a2fb1d19068fc5ccd2eed145e18815ea2b4f279324cb260da</span>
+        </div>
+
+        <p style="font-family: 'Shippori Mincho B1', serif; font-size: 1.4em; margin-top: 1.6em; color: var(--muted);">
+          Q&amp;A — どうぞ。
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      controls: true,
+      progress: true,
+      transition: 'fade',
+      width: 1280,
+      height: 800,
+      margin: 0,
+      minScale: 0.4,
+      maxScale: 2.0,
+    });
+  </script>
+</body>
+</html>

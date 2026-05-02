@@ -26,12 +26,20 @@ const p = pub();
 const amount = parseUnits(String(a.amountJpyc), 18);
 const milestones = a.milestones ?? 1;
 
+// Amoy向け低ガス設定（viemデフォルトは盛りすぎ）
+const gasOpts = {
+  maxFeePerGas: 30_000_000_000n,           // 30 gwei
+  maxPriorityFeePerGas: 25_000_000_000n,   // 25 gwei
+};
+
 // 1. approve
 const approveHash = await w.writeContract({
   address: ADDRESSES.mockJPYC,
   abi: ERC20_ABI,
   functionName: "approve",
   args: [ADDRESSES.escrow, amount],
+  gas: 60000n,
+  ...gasOpts,
 });
 await p.waitForTransactionReceipt({ hash: approveHash });
 
@@ -48,6 +56,8 @@ const createHash = await w.writeContract({
     milestones,
     a.memo,
   ],
+  gas: 250000n,
+  ...gasOpts,
 });
 const receipt = await p.waitForTransactionReceipt({ hash: createHash });
 

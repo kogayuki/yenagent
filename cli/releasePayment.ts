@@ -21,11 +21,15 @@ if (a.escrowId === undefined || !a.milestone) {
 const w = wallet(a.payerPrivateKey);
 const p = pub();
 
+// Amoy はbaseFeeがほぼゼロのためガス料金を控えめに（viemデフォルトは盛りすぎ）
 const hash = await w.writeContract({
   address: ADDRESSES.escrow,
   abi: ESCROW_ABI,
   functionName: "release",
   args: [BigInt(a.escrowId), a.milestone],
+  gas: 130000n,
+  maxFeePerGas: 30_000_000_000n,           // 30 gwei
+  maxPriorityFeePerGas: 25_000_000_000n,   // 25 gwei (Amoyの最低ライン)
 });
 const receipt = await p.waitForTransactionReceipt({ hash });
 

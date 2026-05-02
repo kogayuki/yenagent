@@ -1,7 +1,7 @@
 {
   "name": "yenagent-plugin",
   "version": "0.1.0",
-  "description": "YenAgent (円ジェント): 日本のフリーランス向け自律決済AIエージェント (OpenClaw plugin)",
+  "description": "YenAgent (円エージェント): 日本のフリーランス向け自律決済AIエージェント (OpenClaw plugin)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",

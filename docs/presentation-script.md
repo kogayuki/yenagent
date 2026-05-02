@@ -10,7 +10,7 @@
 
 **[操作]** スライド1表示、深呼吸、観客と目を合わせる
 
-> 「**YenAgent** — 円ジェント。
+> 「**YenAgent** — 円エージェント。
 > 日本のフリーランスのための、自律決済AIエージェントです。
 >
 > Clawathon のテーマ "**Bridging AI Reasoning with Blockchain Execution**"、その橋を **LINE と JPYC で日本に降ろす** プロダクトを作りました。

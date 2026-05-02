@@ -7,7 +7,7 @@ import { releasePaymentTool } from "./tools/releasePayment.js";
 
 export default definePlugin({
   name: "yenagent",
-  displayName: "YenAgent (円ジェント)",
+  displayName: "YenAgent (円エージェント)",
   description:
     "日本のフリーランス向け自律決済AIエージェント。請求書発行→JPYCエスクロー→納品検知→自動release を一気通貫で実行する。",
   systemPrompt: SYSTEM_PROMPT,

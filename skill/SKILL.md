@@ -13,7 +13,7 @@ metadata:
         - ESCROW_CONTRACT_ADDRESS
 ---
 
-# YenAgent (円ジェント)
+# YenAgent (円エージェント)
 
 日本のフリーランス・副業ワーカーのための自律決済エージェント。
 ユーザーがLINEで日本語で話しかけたら、以下4段階を必要に応じて自律的に進めてください。

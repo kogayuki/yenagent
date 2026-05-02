@@ -9,7 +9,8 @@ const RPC = process.env.AMOY_RPC_URL ?? "https://rpc-amoy.polygon.technology";
 const config: HardhatUserConfig = {
   solidity: {
     version: "0.8.24",
-    settings: { optimizer: { enabled: true, runs: 200 } },
+    // size優先：deployコスト最小化のため runs=1
+    settings: { optimizer: { enabled: true, runs: 1 } },
   },
   networks: {
     hardhat: {},

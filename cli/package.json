@@ -1,0 +1,22 @@
+{
+  "name": "yenagent-cli",
+  "version": "0.1.0",
+  "description": "YenAgent CLI tools — invoked by OpenClaw-routed Claude via Bash",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "invoice": "tsx createInvoice.ts",
+    "escrow": "tsx createEscrow.ts",
+    "monitor": "tsx monitorDelivery.ts",
+    "release": "tsx releasePayment.ts"
+  },
+  "dependencies": {
+    "viem": "^2.21.0",
+    "dotenv": "^17.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  }
+}
